@@ -5,7 +5,7 @@ pipeline {
          SONAR_HOME =  tool name: 'sonar-scanner'
     }
 
-//   stages {
+  stages {
 //     stage('Build'){
 //             steps{
            
@@ -54,3 +54,4 @@ pipeline {
     }
   }
 
+}
