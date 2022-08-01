@@ -6,21 +6,6 @@ pipeline {
     }
 
   stages {
-//     stage('Build'){
-//             steps{
-           
-//                 sh 'echo export MAVEN_HOME= "{env.$MAVEN_HOME}"'
-               
-//                 sh'''
-                
-//                 export PATH=$PATH:$MAVEN_HOME/bin
-//                 mvn clean package
-                
-                
-//                  '''
-
-//             }
-//          }
          
     stage('Scan') {
       steps {
