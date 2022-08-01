@@ -52,18 +52,18 @@ pipeline {
         dependencyCheckPublisher pattern: 'dependency-check-report.xml'
           }    
     }
-      stage('Subindo o container novo') {
-                steps {
-                    script {
-                        try {
-                            sh 'docker run -d -p 8989:8989 node-goof:latest'
-                        } catch (Exception e) {
-                            sh "echo $e"
-                            currentBuild.result = 'ABORTED'
-                            error('Erro')
-                    }
-                }
-            }
+//       stage('Subindo o container novo') {
+//                 steps {
+//                     script {
+//                         try {
+//                             sh 'docker run -d -p 8989:8989 node-goof:latest'
+//                         } catch (Exception e) {
+//                             sh "echo $e"
+//                             currentBuild.result = 'ABORTED'
+//                             error('Erro')
+//                     }
+//                 }
+//             }
         }
   }
 
