@@ -37,6 +37,21 @@ pipeline {
         dependencyCheckPublisher pattern: 'dependency-check-report.xml'
           }    
     }
+    
+    stage('Wait Quality Gate'){
+            steps {
+                script {
+                    withSonarQubeEnv("sonarqube-server"){
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                            timeout(time: 1, unit: 'HOURS') {
+                                waitForQualityGate abortPipeline: false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
     stage('Send report to DefecDojo') {
         steps {
            
