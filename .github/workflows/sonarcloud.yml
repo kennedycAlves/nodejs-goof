@@ -23,8 +23,8 @@ jobs:
           args: >
             -Dsonar.organization=kennedycAlves
             -Dsonar.projectKey=JSGoof
-            -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.sources=lib/
-            -Dsonar.test.exclusions=tests/**
-            -Dsonar.tests=tests/
+            #-Dsonar.python.coverage.reportPaths=coverage.xml
+            #-Dsonar.sources=lib/
+            #-Dsonar.test.exclusions=tests/**
+            #-Dsonar.tests=tests/
             -Dsonar.verbose=true
