@@ -1,23 +1,31 @@
 permissions:
   issues: write
-  
+
 name: Nuclei - Vulnerability Scan
 
 on:
-    schedule:
-      - cron: '0 0 * * *'
-    workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   nuclei-scan:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - 'https://juice-shop.herokuapp.com/'
+          - 'https://comprovante.pagseguro.uol.com.br/'
+          - 'https://pagseguro.uol.com.br/'
+          - 'http://pagvendas.pagseguro.uol.com.br/'
+          - 'https://clube.pagseguro.uol.com.br/portal/login'
     steps:
       - uses: actions/checkout@v2
 
       - name: Nuclei - Vulnerability Scan
         uses: projectdiscovery/nuclei-action@main
         with:
-          target: https://juice-shop.herokuapp.com/
+          target: ${{ matrix.target }}
           flags: "-severity critical,high,medium,low -stats"
           github-report: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
